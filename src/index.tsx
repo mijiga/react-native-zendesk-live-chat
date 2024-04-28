@@ -9,14 +9,18 @@ const LINKING_ERROR =
 const ZendeskLiveChat = NativeModules.ZendeskLiveChat
   ? NativeModules.ZendeskLiveChat
   : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+    {},
+    {
+      get() {
+        throw new Error(LINKING_ERROR);
+      },
+    }
+  );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ZendeskLiveChat.multiply(a, b);
+export function initZendesk(channelKey: string): void {
+  ZendeskLiveChat.initZendesk(channelKey);
+}
+
+export function openZendeskChat(): void {
+  ZendeskLiveChat.openZendeskChat();
 }

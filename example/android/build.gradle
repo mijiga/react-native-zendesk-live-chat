@@ -10,6 +10,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
     }
     dependencies {
         classpath("com.android.tools.build:gradle")
@@ -19,3 +20,12 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+allprojects {
+    repositories {
+        maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
+        maven {
+                url  "https://dl.bintray.com/onfido/maven"
+        }
+    }
+}

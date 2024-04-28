@@ -1,18 +1,21 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-zendesk-live-chat';
+import { StyleSheet, View, Button } from 'react-native';
+import { initZendesk, openZendeskChat } from 'react-native-zendesk-live-chat';
+import { ZENDESK_CHANNEL_KEY } from './keys';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    initZendesk(ZENDESK_CHANNEL_KEY);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button title="Open Chat" onPress={() => {
+        console.log('Open Chat');
+        openZendeskChat();
+      }} />
     </View>
   );
 }

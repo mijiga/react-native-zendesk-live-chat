@@ -5,12 +5,21 @@ buildscript {
   repositories {
     google()
     mavenCentral()
+    maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
   }
 
   dependencies {
-    classpath "com.android.tools.build:gradle:7.2.1"
+    classpath "com.android.tools.build:gradle:8.0.0"
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
   }
 }
 
@@ -75,20 +84,25 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+
 }
 
 repositories {
   mavenCentral()
   google()
+  maven { url 'https://zendesk.jfrog.io/zendesk/repo' }
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
 
 dependencies {
+
+  implementation "zendesk.messaging:messaging-android:2.18.0"
+
   // For < 0.71, this will be from the local maven repo
   // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
   //noinspection GradleDynamicVersion
-  implementation "com.facebook.react:react-native:+"
+  implementation "com.facebook.react:react-android:0.74.0"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
