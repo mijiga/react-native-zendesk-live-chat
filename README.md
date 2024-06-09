@@ -13,10 +13,14 @@ npm install react-native-zendesk-live-chat
 ```js
 import { multiply } from 'react-native-zendesk-live-chat';
 
-// ...
-
-const result = await multiply(3, 7);
 ```
+
+## Notes
+https://support.zendesk.com/hc/en-us/articles/4408825772698-How-do-I-find-my-Chat-Account-Key
+https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/sdks/android/getting_started/
+
+`Account Key`
+`Channel Key`
 
 ## Contributing
 
